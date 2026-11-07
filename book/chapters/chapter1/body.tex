@@ -489,6 +489,38 @@ TMP
     \det M\ne0,
 \]
 
+那么：
+\[
+    d^i=M^i{}_jc^j.
+\]
+假设 \(M\) 可逆：
+\[
+    \boxed{
+    c^j=(M^{-1})^j{}_id^i.
+    }
+\]
+
+将其重新代入 \(p\) 的展开：
+\[
+    \begin{aligned}
+        |p\rangle
+         & =|p_j\rangle c^j              \\
+         & =|p_j\rangle(M^{-1})^j{}_id^i \\
+         & =\underbrace{
+        \left[|p_j\rangle(M^{-1})^j{}_i\right]
+        }_{|\phi_i\rangle}d^i.
+    \end{aligned}
+\]
+
+所以：
+\[
+    \boxed{
+    |\phi_i\rangle
+    =|p_j\rangle(M^{-1})^j{}_i.
+    }
+    \tag{1}
+\]
+
 就可以定义：
 \[
     \boxed{
@@ -503,6 +535,18 @@ TMP
 
 这就是所有局部形函数的统一生成器。
 
+然后验证：
+\[
+    \begin{aligned}
+        \langle\ell^k|\phi_i\rangle
+         & =\langle\ell^k|p_j\rangle(M^{-1})^j{}_i \\
+         & =M^k{}_j(M^{-1})^j{}_i                  \\
+         & =\delta^k{}_i.
+    \end{aligned}
+\]
+
+证明结束。
+
 有了这组形函数，对任何自由度有定义的函数 \(u\)，就可以建立插值算子：
 \[
     \boxed{
@@ -515,6 +559,524 @@ TMP
 区别只在于我们怎样选择 \(K,P,\Sigma\)。
 
 下面开始具体生成。
+
+
+\subsection{1-1}
+四、一维所有低阶元，一次性生成
+我们统一使用参考区间
+\[
+    \widehat K=[0,1],
+\]
+
+自变量记为 \(\xi\)。
+4.1 一维一次 Lagrange 元
+选择
+\[
+    P=P_1=\operatorname{span}\{\ket{p_0}=1,\ket{p_1}=\xi\},
+\]
+
+自由度为
+\[
+    \braket{\ell^0}{p}=p(0),\qquad \braket{\ell^1}{p}=p(1).
+\]
+
+代入通用生成器
+\[
+    M^{i}{}_{j}=\braket{\ell^i}{p_j}.
+    =\left[\begin{array}{cc}
+            \left[\begin{array}{cc}1&0\end{array}\right]_{j}
+            \\
+            \left[\begin{array}{cc}1&1\end{array}\right]_{j}
+        \end{array}\right]_{i}
+\]
+\[
+    (M^{-1})_{i}{}^{j}
+    =\left[\begin{array}{cc}
+            \left[\begin{array}{NNN}
+                          1
+                          \\
+                          -1
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNN}
+                          0
+                          \\
+                          1
+                      \end{array}\right]_{j}
+        \end{array}\right]_{i}
+\]
+所以：
+\[
+    \boxed{
+    |\phi_i\rangle
+    =|p_j\rangle(M^{-1})^j{}_i.
+    }
+    \tag{1}
+\]
+\[
+    \left[\begin{array}{cc}\ket{\phi_0}&\ket{\phi_1}\end{array}\right]_{i}
+    =
+    \left[\begin{array}{cc}\ket{p_0}&\ket{p_1}\end{array}\right]_{j}
+    \left[\begin{array}{cc}
+            \left[\begin{array}{NNN}
+                          1
+                          \\
+                          -1
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNN}
+                          0
+                          \\
+                          1
+                      \end{array}\right]_{j}
+        \end{array}\right]_{i}.
+\]
+
+得到：
+\[
+    \boxed{
+        L_0(\xi)=1-\xi,\qquad L_1(\xi)=\xi.
+    }
+\]
+
+\[
+    \boxed{
+        I_Ku=\sum_{j=1}^n\braket{\ell^j}{u}\phi_j.
+    }
+\]
+
+插值函数为
+\[
+    I_1u=u(0)L_0+u(1)L_1.
+\]
+
+这就是老师首先讲的一次元。
+
+
+\subsection{1-2}
+一维二次 Lagrange 元
+现在只改变两个地方：
+\[
+    P=P_2=\operatorname{span}\{1,\xi,\xi^2\},
+\]
+
+节点从两个变成三个：
+\[
+    \xi_0=0,\quad \xi_1=\frac12,\quad \xi_2=1.
+\]
+
+自由度是三个节点函数值。
+\[
+    \braket{\ell^0}{p}=p(0),
+    \qquad \braket{\ell^{\frac12}}{p}=p(\frac12),
+    \qquad \braket{\ell^1}{p}=p(1).
+\]
+
+代入通用生成器
+\[
+    M^{i}{}_{j}=\braket{\ell^i}{p_j}.
+    =\left[\begin{array}{ccc}
+            \left[\begin{array}{NNN}1&0&0\end{array}\right]_{j}
+            \\
+            \left[\begin{array}{NNN}1&\frac{1}{2}&\frac{1}{4}\end{array}\right]_{j}
+            \\
+            \left[\begin{array}{NNN}1&1&1\end{array}\right]_{j}
+        \end{array}\right]_{i}
+\]
+\[
+    (M^{-1})_{i}{}^{j}
+    =\left[\begin{array}{ccc}
+            \left[\begin{array}{NNN}
+                          1
+                          \\
+                          -3
+                          \\
+                          2
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNN}
+                          0
+                          \\
+                          4
+                          \\
+                          -4
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNN}
+                          0
+                          \\
+                          -1
+                          \\
+                          2
+                      \end{array}\right]_{j}
+        \end{array}\right]_{i}
+\]
+所以：
+\[
+    \boxed{
+    |\phi_i\rangle
+    =|p_j\rangle(M^{-1})^j{}_i.
+    }
+    \tag{1}
+\]
+\[
+    \left[\begin{array}{ccc}\ket{\phi_0}&\ket{\phi_1}&\ket{\phi_2}\end{array}\right]_{i}
+    =
+    \left[\begin{array}{ccc}\ket{p_0}&\ket{p_1}&\ket{p_2}\end{array}\right]_{j}
+    \left[\begin{array}{ccc}
+            \left[\begin{array}{NNN}
+                          1
+                          \\
+                          -3
+                          \\
+                          2
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNN}
+                          0
+                          \\
+                          4
+                          \\
+                          -4
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNN}
+                          0
+                          \\
+                          -1
+                          \\
+                          2
+                      \end{array}\right]_{j}
+        \end{array}\right]_{i}
+\]
+
+得到：
+\[
+    \boxed{
+        L_0(\xi)=1-3\xi+2\xi^2,\qquad L_1(\xi)=4\xi-4\xi^2,\qquad L_2(\xi)=-\xi+2\xi^2.
+    }
+\]
+
+\[
+    \boxed{
+        I_Ku=\sum_{j=1}^n\braket{\ell^j}{u}\phi_j.
+    }
+\]
+
+直接用 Lagrange 插值公式：
+\[
+    \boxed{
+        L_i(\xi)=\prod_{j\ne i}
+        \frac{\xi-\xi_j}{\xi_i-\xi_j}.
+    }
+\]
+
+我们可以一口气生成三个形函数：
+\[
+    \boxed{
+        \begin{aligned}
+            L_0(\xi) & =(1-\xi)(1-2\xi), \\
+            L_1(\xi) & =4\xi(1-\xi),     \\
+            L_2(\xi) & =\xi(2\xi-1).
+        \end{aligned}
+    }
+\]
+
+所以：
+\[
+    I_2u
+    =u(0)L_0+u\left(\frac12\right)L_1+u(1)L_2.
+\]
+
+它不是一条需要单独背诵的新公式，而是通用 Lagrange 插值公式的实例。
+
+
+\subsection{1-3}
+一维三次 Lagrange 元
+继续增加次数：
+\[
+    P=P_3=\operatorname{span}\{1,\xi,\xi^2,\xi^3\}.
+\]
+
+选择四个节点：
+\[
+    0,\quad\frac13,\quad\frac23,\quad1.
+\]
+
+我们依然使用同一个公式：
+\[
+    \boxed{
+        L_i(\xi)=\prod_{j\ne i}
+        \frac{\xi-\xi_j}{\xi_i-\xi_j}.
+    }
+\]
+
+例如第一个形函数：
+\[
+    L_0(\xi)=
+    -\frac92
+    \left(\xi-\frac13\right)
+    \left(\xi-\frac23\right)
+    (\xi-1).
+\]
+
+其他三个完全同理。
+
+到这里，我们已经得到了一个任意次数的生成规则：
+\[
+    \boxed{
+        P_k+\text{任意 }k+1\text{ 个互异节点}
+        \longrightarrow
+        \text{一维 }k\text{ 次 Lagrange 元}.
+    }
+\]
+
+因此，一次、二次、三次，实际上没有必要被视为三个独立的理论。
+
+
+\subsection{1-3 H}
+一维三次 Hermite 元
+这里开始出现真正的新东西。
+
+我们仍然使用
+\[
+    P=P_3,
+\]
+
+但不再使用四个函数值，而是使用：
+\[
+    \boxed{
+        \Sigma=\{p(0),p'(0),p(1),p'(1)\}.
+    }
+\]
+
+为什么这四个自由度可以唯一确定三次多项式？
+
+考虑齐次条件：
+\[
+    p(0)=p'(0)=p(1)=p'(1)=0.
+\]
+
+这意味着 \(0\) 和 \(1\) 都是 \(p\) 的至少二重零点。
+
+因此，如果 \(p\ne0\)，就必须有
+\[
+    \xi^2(\xi-1)^2\mid p(\xi).
+\]
+
+但右边这个因子次数为 4，而 \(p\) 的次数最多为 3。
+
+矛盾。
+
+所以只能有
+\[
+    p\equiv0.
+\]
+
+这就证明了自由度的唯一确定性。
+
+现在生成四个 Hermite 形函数：
+\[
+    \boxed{
+        \begin{aligned}
+            H_{00}(\xi) & =1-3\xi^2+2\xi^3,  \\
+            H_{10}(\xi) & =\xi-2\xi^2+\xi^3, \\
+            H_{01}(\xi) & =3\xi^2-2\xi^3,    \\
+            H_{11}(\xi) & =-\xi^2+\xi^3.
+        \end{aligned}
+    }
+\]
+
+它们分别控制左端函数值、左端导数值、右端函数值、右端导数值。
+
+在实际区间 \(K=[a,b]\) 上，令
+\[
+    h=b-a,\qquad \xi=\frac{x-a}{h},
+\]
+
+得到
+\[
+    \boxed{
+        \begin{aligned}
+            I_Hu(x)={} & u(a)H_{00}(\xi)
+            +h\,u'(a)H_{10}(\xi)          \\
+                       & +u(b)H_{01}(\xi)
+            +h\,u'(b)H_{11}(\xi).
+        \end{aligned}
+    }
+\]
+\[
+    P=P_2=\operatorname{span}\{1,\xi,\xi^2,\xi^3\},
+\]
+
+节点从两个变成三个：
+\[
+    \xi_0=0,\quad \xi_1=1.
+\]
+
+自由度是三个节点函数值。
+\[
+    \braket{\ell^0}{p}=p(0),
+    \qquad \braket{\ell^1}{p}=p'(0),
+    \qquad \braket{\ell^2}{p}=p(1),
+    \qquad \braket{\ell^3}{p}=p'(1).
+\]
+
+代入通用生成器
+\[
+    M^{i}{}_{j}=\braket{\ell^i}{p_j}.
+    =\left[\begin{array}{cccc}
+            \left[\begin{array}{NNNN}1&0&0&0\end{array}\right]_{j}
+            \\
+            \left[\begin{array}{NNNN}0&1&0&0\end{array}\right]_{j}
+            \\
+            \left[\begin{array}{NNNN}1&1&1&1\end{array}\right]_{j}
+            \\
+            \left[\begin{array}{NNNN}0&1&2&3\end{array}\right]_{j}
+        \end{array}\right]_{i}
+\]
+\[
+    (M^{-1})_{i}{}^{j}
+    =\left[\begin{array}{cccc}
+            \left[\begin{array}{NNNN}
+                          1
+                          \\
+                          0
+                          \\
+                          -3
+                          \\
+                          2
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNNN}
+                          0
+                          \\
+                          1
+                          \\
+                          -2
+                          \\
+                          1
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNNN}
+                          0
+                          \\
+                          0
+                          \\
+                          3
+                          \\
+                          -2
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNNN}
+                          0
+                          \\
+                          0
+                          \\
+                          -1
+                          \\
+                          1
+                      \end{array}\right]_{j}
+        \end{array}\right]_{i}
+\]
+所以：
+\[
+    \boxed{
+    |\phi_i\rangle
+    =|p_j\rangle(M^{-1})^j{}_i.
+    }
+    \tag{1}
+\]
+\[
+    \left[\begin{array}{cccc}\ket{\phi_0}&\ket{\phi_1}&\ket{\phi_2}&\ket{\phi_3}\end{array}\right]_{i}
+    =
+    \left[\begin{array}{cccc}\ket{p_0}&\ket{p_1}&\ket{p_2}&\ket{p_3}\end{array}\right]_{j}
+    \left[\begin{array}{cccc}
+            \left[\begin{array}{NNNN}
+                          1
+                          \\
+                          0
+                          \\
+                          -3
+                          \\
+                          2
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNNN}
+                          0
+                          \\
+                          1
+                          \\
+                          -2
+                          \\
+                          1
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNNN}
+                          0
+                          \\
+                          0
+                          \\
+                          3
+                          \\
+                          -2
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNNN}
+                          0
+                          \\
+                          0
+                          \\
+                          -1
+                          \\
+                          1
+                      \end{array}\right]_{j}
+        \end{array}\right]_{i}
+\]
+\[
+    \boxed{
+        H_0(\xi)=1-3\xi^2+2\xi^3,
+        \qquad H_1(\xi)=\xi-2\xi^2+\xi^3,
+        \qquad H_2(\xi)=3\xi^2+-2\xi^3.
+        \qquad H_3(\xi)=-\xi^2+\xi^3.
+    }
+\]
+
+这里导数项为什么必须乘上 \(h\)？
+
+因为
+\[
+    \frac{d}{dx}=\frac1h\frac{d}{d\xi}.
+\]
+
+如果不乘 \(h\)，参考单元上的单位导数就无法正确对应实际区间上的导数自由度。
+
+这是老师讲参考单元时很值得注意的细节。
+到这里，出现第一个闭包
+一维全部生成规则
+\[
+    \boxed{
+        \begin{array}{c}
+            P_k+\text{节点函数值} \\
+            \Downarrow       \\
+            k\text{ 次 Lagrange 元}
+        \end{array}
+    }
+\]
+
+\[
+    \boxed{
+        \begin{array}{c}
+            P_3+\text{端点函数值和导数值} \\
+            \Downarrow           \\
+            \text{三次 Hermite 元}
+        \end{array}
+    }
+\]
+
+这里生成的是局部元。把相邻单元按共享自由度拼起来，才得到全局有限元空间。
+
+你会发现：我们只学了一条 Lagrange 公式、一套自由度矩阵方法，以及 Hermite 自由度的构造，便覆盖了一维的主要情况。
 
 
 
