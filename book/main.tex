@@ -1,0 +1,31 @@
+% \documentclass[12pt, a4paper]{book}
+\documentclass{book}
+
+% Load all shared packages from our single preamble file
+\input{preamble}
+
+\title{TMP}
+\author{TMP}
+\date{20260814-\today}
+
+\begin{document}
+
+\maketitle          % renders the book title page
+\tableofcontents    % renders the book-wide table of contents
+
+% Chapter 1: we provide the \chapter heading here,
+% then pull in the shared content (sections and text).
+\chapter{Introduction}
+\input{chapters/chapter1/body.tex}
+
+\chapter{Tensor Notation of Mine}
+\input{chapters/chapter2/body.tex}
+
+\chapter{DeepONet Direct Scatter}
+\input{chapters/chapter3/body.tex}
+
+% When you have more chapters, add them the same way:
+% \chapter{The Telecentric}
+% \input{chapters/Telecentric-body}
+
+\end{document}

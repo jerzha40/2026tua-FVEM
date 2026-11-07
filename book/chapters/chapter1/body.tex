@@ -1,0 +1,560 @@
+% chapter1-body.tex — pure content, no preamble.
+% This file is \input{} by both main.tex (book) and chapter1.tex (article).
+
+
+
+
+\section{Problem Comprehend}
+Consider a one-dimensional line with a wall located at
+\[
+    x=a>0.
+\]
+We launch a right-going wave from the left. Its complex representation is
+\[
+    U(x,t)=e^{ikx}e^{-i\omega t}
+    =e^{i(kx-\omega t)}.
+\]
+
+Here, $\omega$ is the angular frequency, with unit $\mathrm{s}^{-1}$,
+and $k$ is the wavenumber, with unit $\mathrm{m}^{-1}$.
+The spatial phase is
+\[
+    \phi(x)=kx.
+\]
+
+For a uniform wave, one complete wavelength $\lambda$ corresponds to
+a phase change of $2\pi$. Hence
+\[
+    k=\frac{2\pi}{\lambda}.
+\]
+
+This definition uses a complete wavelength. However, if the phase varies
+spatially, a complete wavelength may not be locally available for
+measurement. Instead, we consider the phase change over an infinitesimal
+spatial interval:
+\[
+    k(x)
+    =\lim_{\Delta x\to0}
+    \frac{\phi(x+\Delta x)-\phi(x)}{\Delta x}
+    =\frac{d\phi}{dx}.
+\]
+
+Thus, the local wavenumber measures the local phase accumulation per
+unit distance.
+
+The same idea can also be interpreted through time.
+Dividing the local phase change and the propagation distance
+by the same time interval gives, intuitively,
+\[
+    k
+    =\frac{d\phi}{dx}
+    \sim
+    \frac{d\phi/dt}{dx/dt}
+    =\frac{\omega}{c}.
+\]
+Thus, the wavenumber can also be understood as the temporal phase
+accumulation rate divided by the propagation speed.
+
+% TODO (Work 2): give a rigorous derivation using the total derivative
+% along a constant-phase trajectory.
+
+In higher dimensions, this idea becomes the local wavevector
+\[
+    \mathbf{k}(x)=\nabla\phi(x).
+\]
+
+
+\subsection{Propagation Directions in One Dimension}
+In one dimension, the unit sphere consists of only two points,
+\[
+    S^0=\{-1,+1\},
+\]
+corresponding to the two possible propagation directions.
+
+If
+\[
+    D^1=[-1,1],
+\]
+then
+\[
+    \partial D^1=S^0=\{-1,+1\}.
+\]
+
+For a direction $d\in S^0$, a plane-wave solution can be written as
+\[
+    u(x;d)=e^{ikxd}.
+\]
+Therefore,
+\[
+    d=+1 \quad\Longrightarrow\quad e^{ikx},
+\]
+and
+\[
+    d=-1 \quad\Longrightarrow\quad e^{-ikx}.
+\]
+
+% TODO: explain how the discrete directions in $S^0$
+% generalize to $d\in S^{n-1}$ in higher dimensions.
+
+
+
+
+\section{Bessel Function Derivation}
+Basically I'm going to talk about
+derivation of the change of veriable of the Laplacian
+\[
+    \partial_i=\frac{\partial}{\partial q^i}
+    \Delta u=
+\]
+\[
+    c^i=
+    \left[\begin{array}{c}
+            c^1
+            \\
+            c^2
+        \end{array}\right]^{i}
+\]
+\[
+    p^j=
+    \left[\begin{array}{c}
+            p^1
+            \\
+            p^2
+        \end{array}\right]^{j}
+\]
+\[
+    u(c^i)=u(p^j)
+\]
+\[\begin{tikzcd}
+        \begin{array}{c}     \left[\begin{array}{c}             c^1             \\             c^2         \end{array}\right]^{i}  \end{array} & u \\
+        \begin{array}{c}     \left[\begin{array}{c}             p^1             \\             p^2         \end{array}\right]^{j} \end{array}
+        \arrow[from=1-1, to=1-2]
+        \arrow["J", from=1-1, to=2-1]
+        \arrow["{J^{-1}}", shift left=3, from=2-1, to=1-1]
+        \arrow[from=2-1, to=1-2]
+    \end{tikzcd}\]
+\[
+    c^i=\textbf{Polar}(p^j)
+\]
+Satisfy the Jacobian as follow.
+\[
+    J=F^i{}_j{}=
+    \left[\begin{array}{cc}
+            \left[\begin{array}{ll}
+                          \frac{\partial c^1}{\partial p^1}
+                           &
+                          \frac{\partial c^1}{\partial p^2}
+                      \end{array}\right]_{j}
+            \\
+            \left[\begin{array}{ll}
+                          \frac{\partial c^2}{\partial p^1}
+                           &
+                          \frac{\partial c^2}{\partial p^2}
+                      \end{array}\right]_{j}
+        \end{array}\right]^{i}
+    =\frac{\partial c^i}{\partial p^j}
+\]
+\[
+    J^{-1}=B^j{}_i{}=
+    \left[\begin{array}{cc}
+            \left[\begin{array}{ll}
+                          \frac{\partial p^1}{\partial c^1}
+                           &
+                          \frac{\partial p^1}{\partial c^2}
+                      \end{array}\right]_{i}
+            \\
+            \left[\begin{array}{ll}
+                          \frac{\partial p^2}{\partial c^1}
+                           &
+                          \frac{\partial p^2}{\partial c^2}
+                      \end{array}\right]_{i}
+        \end{array}\right]^{j}
+    =\frac{\partial p^j}{\partial c^i}
+\]
+\[
+    \frac{\partial}{\partial p^j}=
+    \left[\begin{array}{ll}
+            \frac{\partial }{\partial p^1}
+             &
+            \frac{\partial }{\partial p^2}
+        \end{array}\right]_{j}
+    =
+    e_j
+\]
+\[
+    \frac{\partial}{\partial c^i}=
+    \left[\begin{array}{ll}
+            \frac{\partial }{\partial c^1}
+             &
+            \frac{\partial }{\partial c^2}
+        \end{array}\right]_{i}
+    =
+    \widetilde{e}_i
+\]
+\[
+    \frac{\partial}{\partial p^j}=\frac{\partial}{\partial c^i}F^i{}_j{}
+\]
+\[
+    \frac{\partial}{\partial c^i}=\frac{\partial}{\partial p^j}B^j{}_i{}
+\]
+then we need to derive the total Gradient of \(F\) and \(B\) as follow
+\[
+    \frac{\partial}{\partial c^i}B^j{}_i{}=
+    \frac{\partial}{\partial c^i}\frac{\partial p^j}{\partial c^i}=
+    \left[\begin{array}{cc}
+            \frac{\partial^2 p^1}{\partial {c^1}^2}
+            +
+            \frac{\partial^2 p^1}{\partial {c^2}^2}
+            \\
+            \frac{\partial^2 p^2}{\partial {c^1}^2}
+            +
+            \frac{\partial^2 p^2}{\partial {c^2}^2}
+        \end{array}\right]^{j}
+\]
+then Laplacian \(u\) as follow
+\[
+    \begin{aligned}
+        \Delta u                                                    & =\frac{\partial}{\partial c^i}\frac{\partial}{\partial c^i}u                                                                                                                                                     \\
+                                                                    & =\frac{\partial}{\partial c^i}\frac{\partial u}{\partial c^i}                                                                                                                                                    \\
+                                                                    & =\frac{\partial}{\partial c^i}\left(\frac{\partial p^j}{\partial c^i}\frac{\partial u}{\partial p^j}\right)                                                                                                      \\
+                                                                    & =\left(\frac{\partial^2 p^j}{\partial {c^i}^2}\frac{\partial u}{\partial p^j}+\frac{\partial p^j}{\partial c^i}\frac{\partial}{\partial c^i}\frac{\partial u}{\partial p^j}\right)                               \\
+        \frac{\partial}{\partial c^i}\frac{\partial}{\partial c^i}u & =\left(\frac{\partial^2 p^j}{\partial {c^i}^2}\frac{\partial u}{\partial p^j}+\frac{\partial p^j}{\partial c^i}\frac{\partial p^k}{\partial c^i}\frac{\partial^2 u}{\partial p^j\partial p^k}\right)             \\
+        \frac{\partial}{\partial c^i}\frac{\partial}{\partial c^i}  & =\left(\frac{\partial^2 p^j}{\partial {c^i}^2}\frac{\partial }{\partial p^j}+\frac{\partial p^j}{\partial c^i}\frac{\partial p^k}{\partial c^i}\frac{\partial}{\partial p^j}\frac{\partial}{\partial p^k}\right) \\
+    \end{aligned}
+\]
+\[
+    \boxed{
+        \Delta=g^{jk}\partial_j\partial_k
+        +(\Delta_c p^j)\partial_j
+    }
+\]
+Which
+\[
+    \boxed{
+        A^{jk}=
+        \frac{\partial p^j}{\partial c^i}
+        \frac{\partial p^k}{\partial c^i}
+        =g^{jk}
+    }
+\]
+This \(g^{jk}\) Inverse Metric Tensor
+\[
+    B^j=\Delta_c p^j
+\]
+is the Laplacian of coordinate function \(p^j(c)\) under \(c\)
+
+
+
+
+\section{TMP}
+
+
+\subsection{MVHR}
+\[
+    T^i{}_{ab}=
+    \left[\begin{array}{c}
+            \left[\begin{array}{ccc}
+                          \left[\begin{array}{NNNN}
+                                  1 &
+                                  2 &
+                                  3 &
+                                  4
+                              \end{array}\right]_{b}
+                           &
+                          \left[\begin{array}{NNNN}
+                                  5 &
+                                  6 &
+                                  7 &
+                                  8
+                              \end{array}\right]_{b}
+                           &
+                          \left[\begin{array}{NNNN}
+                                  9  &
+                                  10 &
+                                  11 &
+                                  12
+                              \end{array}\right]_{b}
+                      \end{array}\right]_{a}
+            \\
+            \left[\begin{array}{ccc}
+                          \left[\begin{array}{NNNN}
+                                  13 &
+                                  14 &
+                                  15 &
+                                  16
+                              \end{array}\right]_{b}
+                           &
+                          \left[\begin{array}{NNNN}
+                                  17 &
+                                  18 &
+                                  19 &
+                                  20
+                              \end{array}\right]_{b}
+                           &
+                          \left[\begin{array}{NNNN}
+                                  21 &
+                                  22 &
+                                  23 &
+                                  24
+                              \end{array}\right]_{b}
+                      \end{array}\right]_{a}
+        \end{array}\right]_{i}
+\]
+\[
+    T_i{}^a{}_b=
+    \left[\begin{array}{cc}
+            \left[\begin{array}{ccc}
+                          \left[\begin{array}{NNNN}
+                                  1 &
+                                  2 &
+                                  3 &
+                                  4
+                              \end{array}\right]_{b}
+                          \\
+                          \left[\begin{array}{NNNN}
+                                  5 &
+                                  6 &
+                                  7 &
+                                  8
+                              \end{array}\right]_{b}
+                          \\
+                          \left[\begin{array}{NNNN}
+                                  9  &
+                                  10 &
+                                  11 &
+                                  12
+                              \end{array}\right]_{b}
+                      \end{array}\right]_{a}
+             &
+            \left[\begin{array}{ccc}
+                          \left[\begin{array}{NNNN}
+                                  13 &
+                                  14 &
+                                  15 &
+                                  16
+                              \end{array}\right]_{b}
+                          \\
+                          \left[\begin{array}{NNNN}
+                                  17 &
+                                  18 &
+                                  19 &
+                                  20
+                              \end{array}\right]_{b}
+                          \\
+                          \left[\begin{array}{NNNN}
+                                  21 &
+                                  22 &
+                                  23 &
+                                  24
+                              \end{array}\right]_{b}
+                      \end{array}\right]_{a}
+        \end{array}\right]_{i}
+\]
+\[
+    s=\left[\begin{array}{c}7\end{array}\right]_{0}
+\]
+\[
+    A^i=\left[\begin{array}{c}
+            7
+            \\
+            3
+        \end{array}\right]_{i}
+\]
+\[
+    A_i=\left[\begin{array}{cc}7&3\end{array}\right]_{i}
+\]
+\[
+    B^i{}_a=\left[\begin{array}{cc}
+            \left[\begin{array}{lll}1&2&3\end{array}\right]_{a}
+            \\
+            \left[\begin{array}{lll}4&5&6\end{array}\right]_{a}
+        \end{array}\right]_{i}
+\]
+\[
+    B_i{}^a=\left[\begin{array}{cc}
+            \left[\begin{array}{lll}
+                          1
+                          \\
+                          2
+                          \\
+                          3\end{array}\right]_{a}
+             &
+            \left[\begin{array}{lll}
+                          1
+                          \\
+                          2
+                          \\
+                          3\end{array}\right]_{a}
+        \end{array}\right]_{i}
+\]
+\[
+    B^{ia}=\left[\begin{array}{cc}
+            \left[\begin{array}{lll}
+                          1
+                          \\
+                          2
+                          \\
+                          3\end{array}\right]_{a}
+            \\
+            \left[\begin{array}{lll}
+                          1
+                          \\
+                          2
+                          \\
+                          3\end{array}\right]_{a}
+        \end{array}\right]_{i}
+\]
+\[
+    B_{ia}=\left[\begin{array}{cc}
+            \left[\begin{array}{lll}
+                          1 &
+                          2 &
+                          3
+                      \end{array}\right]_{a}
+             &
+            \left[\begin{array}{lll}
+                          1 &
+                          2 &
+                          3
+                      \end{array}\right]_{a}
+        \end{array}\right]_{i}
+\]
+TMP
+
+
+
+
+\section{FEM}
+三、最重要的通用生成公式
+无论几维、几次，我们都从
+\[
+    (K,P,\Sigma)
+\]
+开始。
+
+假设
+\[
+    P=\operatorname{span}\{\ket{p_1},\ldots,\left| p_n \right\rangle\},
+\]
+是张成向量空间的向量基底
+
+\[
+    \Sigma=\{\bra{\ell^1} ,\ldots,\left\langle \ell^n \right|\}.
+\]
+是泛函基底，也就是对偶空间。
+
+我们希望构造一些自然对偶基底，也就是对偶
+\[
+    P=\Phi=\operatorname{span}\{\ket{\phi^1},\ldots,\ket{\phi^n}\}
+\]
+满足
+\[
+    \braket{\ell^i}{\phi_j}=\delta^{i}{}_{j}.
+\]
+
+推导：\\
+对任意任意向量\(\ket{p}\)
+有
+\[
+    \ket{p}=\ket{p_j}c^j
+\]
+
+作用泛函
+\[
+    \braket{\ell^i}{p}=\braket{\ell^i}{p_j}c^j=d^i
+\]
+我们希望
+\[
+    \ket{p}=\ket{\phi_i}d^i
+\]
+
+所以有
+\[
+    \ket{p}=\ket{\phi_i}d^i=\ket{p_j}c^j
+\]
+\[
+    \braket{\ell^i}{p_j}\ket{\phi_i}=\ket{p_j}
+\]
+\[
+    \ket{\phi_i}=\braket{\ell^i}{p_j}^{-1}\ket{p_j}
+\]
+
+构造矩阵：
+\[
+    \boxed{M^{i}{}_{j}=\braket{\ell^i}{p_j}.}
+\]
+
+如果
+\[
+    \det M\ne0,
+\]
+
+就可以定义：
+\[
+    \boxed{
+        \ket{\phi_i}=\sum_{j=1}^n(M^{-1})^{j}{}_{i}\ket{p_j}.
+    }
+\]
+
+于是直接得到
+\[
+    \braket{\ell^i}{\phi_j}=\delta^{i}{}_{j}.
+\]
+
+这就是所有局部形函数的统一生成器。
+
+有了这组形函数，对任何自由度有定义的函数 \(u\)，就可以建立插值算子：
+\[
+    \boxed{
+        I_Ku=\sum_{j=1}^n\braket{\ell^j}{u}\phi_j.
+    }
+\]
+
+这一套公式不区分一次元、二次元、Hermite 元、三角形元。
+
+区别只在于我们怎样选择 \(K,P,\Sigma\)。
+
+下面开始具体生成。
+
+
+
+
+\section{Reference}
+\bibliographystyle{plain}  % or another style like unsrt, IEEEtran, etc.
+\bibliography{refer}  % references.bib is the file name
+
+
+% \subsection{Definition of EMH}
+% \begin{definition}[EMH means Symmetries]
+%     \label{def:mydefinition}
+%     We say a market is completely EMH if and
+%     only if for every condition $A$, the random
+%     variable of the logarithmic growth rate $W$
+%     agrees that $\mathbb{E}_{W\mid A}(W)\doteq 0$.
+% \end{definition}
+
+
+% \subsection{Prior Work}
+% Discussion of what others have done.
+
+
+
+
+% \section{Methods}
+% How you approached the problem.
+
+
+
+
+% \section{Results}
+% What you found.
+
+
+
+
+% \section{Conclusion}
+% Your closing thoughts.
+
+
+
+
