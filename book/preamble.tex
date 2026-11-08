@@ -9,15 +9,18 @@
 \usepackage{amsthm}
 \usepackage{ctex}
 
-\usepackage{array}
-\usepackage{siunitx}
-\newcolumntype{N}{S[table-format=2.0]}
-
 \usepackage{quiver}
 
+\usepackage{array}
 \usepackage{physics}
+\usepackage{nicematrix}
+\newcolumntype{N}{c}
 
 \usepackage{svg}
+\svgsetup{
+    inkscapelatex=false,
+    inkscapearea=page
+}
 
 \theoremstyle{definition} % Non-italicized style
 \newtheorem{definition}{Definition}[section]

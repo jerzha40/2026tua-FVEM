@@ -1,3 +1,4 @@
+!TEX root = main.tex
 % chapter1-body.tex — pure content, no preamble.
 % This file is \input{} by both main.tex (book) and chapter1.tex (article).
 
@@ -425,7 +426,11 @@ TMP
 
 
 \section{FEM}
-\includesvg[width=0.65\linewidth]{figures/triangle}
+\begin{figure}[htbp]
+    \centering
+    \includesvg[width=0.55\linewidth]{figures/triangle.svg}
+    \caption{Barycentric coordinates on a triangle}
+\end{figure}
 
 三、最重要的通用生成公式
 无论几维、几次，我们都从
