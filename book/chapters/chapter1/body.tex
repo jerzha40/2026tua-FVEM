@@ -669,7 +669,7 @@ TMP
 下面开始具体生成。
 
 
-\subsection{1-1}
+\subsection{1-1 线一次元}
 四、一维所有低阶元，一次性生成
 我们统一使用参考区间
 \[
@@ -761,7 +761,7 @@ TMP
 这就是老师首先讲的一次元。
 
 
-\subsection{1-2}
+\subsection{1-2 线二次元}
 一维二次 Lagrange 元
 现在只改变两个地方：
 \[
@@ -899,7 +899,7 @@ TMP
 它不是一条需要单独背诵的新公式，而是通用 Lagrange 插值公式的实例。
 
 
-\subsection{1-3}
+\subsection{1-3 线三次元}
 一维三次 Lagrange 元
 继续增加次数：
 \[
@@ -942,7 +942,7 @@ TMP
 因此，一次、二次、三次，实际上没有必要被视为三个独立的理论。
 
 
-\subsection{1-3 H}
+\subsection{1-3 线Hermite三次元}
 一维三次 Hermite 元
 这里开始出现真正的新东西。
 
@@ -1187,7 +1187,7 @@ TMP
 你会发现：我们只学了一条 Lagrange 公式、一套自由度矩阵方法，以及 Hermite 自由度的构造，便覆盖了一维的主要情况。
 
 
-\subsection{2-1}
+\subsection{2-1 三角形一次元}
 五、二维不是重新学，而是增加两种生成机制
 二维有两类非常常见的几何单元：
 - 三角形：用重心坐标生成。
@@ -1247,22 +1247,53 @@ TMP
         \tarr{ccc}{1&A^3_0&A^3_1}_j
     }^i
 \]
+我们定义
 \[
-    (M^{-1})_{i}{}^{j}
-    =\tarrf{cc}{
-        \tarrf[1em]{2}{
-            1
-            \\
-            -1
-        }_j
-        &
-        \tarrf[1em]{2}{
-            0
-            \\
-            1
-        }_j
-    }_i
+    \boxed{
+        D=\det M
+        =(A^2_0-A^1_0)(A^3_1-A^1_1)
+        -(A^3_0-A^1_0)(A^2_1-A^1_1).
+    }
 \]
+
+这就是之前解释的两条边向量的有向叉积。
+3. 完全采用你的记号写逆矩阵
+\[
+    \boxed{
+        M^{-1}=\frac1D
+        \begin{pmatrix}
+            A^2_0A^3_1-A^2_1A^3_0
+             &
+            A^3_0A^1_1-A^3_1A^1_0
+             &
+            A^1_0A^2_1-A^1_1A^2_0
+            \\
+            A^2_1-A^3_1
+             &
+            A^3_1-A^1_1
+             &
+            A^1_1-A^2_1
+            \\
+            A^3_0-A^2_0
+             &
+            A^1_0-A^3_0
+             &
+            A^2_0-A^1_0
+        \end{pmatrix}.
+    }
+\]
+
+
+我们已经知道
+\[
+    \boxed{
+    |\phi_i\rangle=|p_j\rangle(M^{-1})^j{}_i.
+    }
+\]
+
+
+
+所以从现在开始，我在三角形 FEM 相关推导中统一使用 \(A^i_a,\ M^i{}_j,\ (M^{-1})^j{}_i,\ \lambda^i\)。
 所以：
 \[
     \boxed{
@@ -1272,30 +1303,98 @@ TMP
     \tag{1}
 \]
 \[
-    \left[\begin{array}{cc}\ket{\phi_0}&\ket{\phi_1}\end{array}\right]_{i}
+    (M^{-1})_{i}{}^{j}
+    =\tarrf{ccc}{
+        \tarrf{ccc}{
+            A^2_0A^3_1-A^2_1A^3_0
+            \\
+            A^2_1-A^3_1
+            \\
+            A^3_0-A^2_0
+        }_j
+        &
+        \tarrf{ccc}{
+            A^3_0A^1_1-A^3_1A^1_0
+            \\
+            A^3_1-A^1_1
+            \\
+            A^1_0-A^3_0
+        }_j
+        &
+        \tarrf{ccc}{
+            A^1_0A^2_1-A^1_1A^2_0
+            \\
+            A^1_1-A^2_1
+            \\
+            A^2_0-A^1_0
+        }_j
+    }_i
+\]
+\[
+    \left[\begin{array}{ccc}\ket{\phi_0}&\ket{\phi_1}&\ket{\phi_2}\end{array}\right]_{i}
     =
-    \left[\begin{array}{cc}\ket{p_0}&\ket{p_1}\end{array}\right]_{j}
-    \left[\begin{array}{cc}
-            \left[\begin{array}{NNN}
-                          1
-                          \\
-                          -1
-                      \end{array}\right]_{j}
-             &
-            \left[\begin{array}{NNN}
-                          0
-                          \\
-                          1
-                      \end{array}\right]_{j}
-        \end{array}\right]_{i}.
+    \left[\begin{array}{ccc}\ket{p_0}&\ket{p_1}&\ket{p_2}\end{array}\right]_{j}
+    \tarrf{ccc}{
+        \tarrf{ccc}{
+            A^2_0A^3_1-A^2_1A^3_0
+            \\
+            A^2_1-A^3_1
+            \\
+            A^3_0-A^2_0
+        }_j
+        &
+        \tarrf{ccc}{
+            A^3_0A^1_1-A^3_1A^1_0
+            \\
+            A^3_1-A^1_1
+            \\
+            A^1_0-A^3_0
+        }_j
+        &
+        \tarrf{ccc}{
+            A^1_0A^2_1-A^1_1A^2_0
+            \\
+            A^1_1-A^2_1
+            \\
+            A^2_0-A^1_0
+        }_j
+    }_i.
 \]
 
 得到：
+因此，取逆矩阵的第一列：
 \[
     \boxed{
-        L_0(\xi)=1-\xi,\qquad L_1(\xi)=\xi.
+        \begin{aligned}
+            \phi_1(x_0,x_1)=\frac1D\Big[
+             & A^2_0A^3_1-A^2_1A^3_0 \\
+             & +(A^2_1-A^3_1)x_0     \\
+             & +(A^3_0-A^2_0)x_1
+                \Big].
+        \end{aligned}
     }
 \]
+
+这就与你笔记中的通用生成公式完全一致。
+
+GPT 可以轻松注意到
+
+4. 几何意义也可以采用同一套记号
+为了简洁，记 \(X=(x_0,x_1)\)。
+\[
+    \boxed{
+        \begin{aligned}
+            \phi_1(x_j)
+             & =\frac{\det(A^2-X,A^3-X)}D, \\
+            \phi_2(x_j)
+             & =\frac{\det(A^3-X,A^1-X)}D, \\
+            \phi_3(x_j)
+             & =\frac{\det(A^1-X,A^2-X)}D.
+        \end{aligned}
+    }
+\]
+
+这里每个分子都是子三角形的有向二倍面积。
 
 \[
     \boxed{
@@ -1303,10 +1402,6 @@ TMP
     }
 \]
 
-插值函数为
-\[
-    I_1u=u(0)L_0+u(1)L_1.
-\]
 
 
 那么三个形函数直接就是：
@@ -1318,10 +1413,24 @@ TMP
     }
 \]
 
+并且
+\[
+    \phi_i=\lambda^i,\qquad
+    \lambda^i(A^j)=\delta^{ij},\qquad
+    \sum_{i=1}^3\lambda^i=1.
+\]
+
+那么
+\[
+    \boxed{|D|=2|K|}
+\]
+
+其中 \(|K|\) 是三角形面积。
+
 插值函数为：
 \[
     \boxed{
-        I_Ku=\sum_{i=1}^3u(A_i)\lambda_i.
+        I_Ku=\sum_{i=1}^3u(A^i)\phi_i.
     }
 \]
 
@@ -1332,10 +1441,13 @@ TMP
 
 与二维的
 \[
-    u(A_1)\lambda_1+u(A_2)\lambda_2+u(A_3)\lambda_3
+    u(A^1)\phi_1+u(A^2)\phi_2+u(A^3)\phi_3
 \]
 
 其实是同一种思想。
+
+
+\subsection{2-2 三角形二次元}
 5.2 三角形二次元：六个自由度
 二维二次多项式空间是：
 \[
@@ -1430,6 +1542,9 @@ TMP
 \]
 
 我们可以在这里停止，不需要再单独背三次三角形元的十个公式。
+
+
+\subsection{2-1 矩形元}
 5.4 矩形元：直接做张量积
 矩形元甚至更有意思。
 
@@ -1549,6 +1664,8 @@ TMP
 
 这其实就是你之前所说的“直积生成”最准确的数学实例。
 
+
+\subsection{Maps}
 六、从参考单元生成实际单元：坐标映射
 到目前为止，我们主要在标准区间、标准三角形和标准正方形上构造形函数。
 
@@ -1675,6 +1792,8 @@ TMP
 
 这条规则能够避免为每一个不同形状的三角形、四边形重新推导形函数。
 
+
+\subsection{Assembly}
 七、局部有限元怎样生成全局有限元空间？
 我们此前的所有构造都发生在单个单元 \(K\) 上。
 
@@ -1708,6 +1827,8 @@ TMP
 - 全局空间解决不同单元之间如何拼接的问题。
 三次 Hermite 元还可以要求共享节点的导数自由度，从而在一维得到 \(C^1\) 连续的分片三次空间。
 
+
+\subsection{Error}
 八、范数和插值误差也有统一生成规律
 前面几乎全部是代数与几何构造。
 
@@ -1761,6 +1882,8 @@ TMP
 
 这也解释了为什么老师后面还要花大量时间研究稳定性、双线性型和各种范数。
 
+
+\subsection{PDE}
 九、最后补上 PDE，这个闭包才真正接入有限元法
 你 9 月 29 日最早的一张板书中，就出现了二维 Poisson 方程：
 \[
