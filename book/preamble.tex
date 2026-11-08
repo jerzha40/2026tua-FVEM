@@ -14,7 +14,14 @@
 \usepackage{array}
 \usepackage{physics}
 \usepackage{nicematrix}
-\newcolumntype{N}{c}
+\newcolumntype{N}{w{r}{1.8em}}
+\newcommand{\tarr}[2]{%
+    \left[
+    \begin{array}{#1}
+        #2
+    \end{array}
+    \right]%
+}
 
 \usepackage{svg}
 \svgsetup{

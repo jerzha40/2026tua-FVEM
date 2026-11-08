@@ -352,6 +352,113 @@ is the Laplacian of coordinate function \(p^j(c)\) under \(c\)
         \end{array}\right]_{i}
 \]
 \[
+    T_i{}^a{}_b=
+    \tarr{cc}{
+        \tarr{ccc}{
+            \tarr{NNNN}{1&2&3&4}_{b}
+            \\
+            \tarr{NNNN}{1&2&3&4}_{b}
+            \\
+            \tarr{NNNN}{1&2&3&4}_{b}
+        }^{a}
+        &
+        \tarr{ccc}{
+            \tarr{NNNN}{1&2&3&4}_{b}
+            \\
+            \tarr{NNNN}{1&2&3&4}_{b}
+            \\
+            \tarr{NNNN}{1&2&3&4}_{b}
+        }^{a}
+    }_{i}
+    =
+    \left[\begin{array}{cc}
+            \left[\begin{array}{ccc}
+                          \left[\begin{array}{NNNN}
+                                  1 &
+                                  2 &
+                                  3 &
+                                  4
+                              \end{array}\right]_{b}
+                          \\
+                          \left[\begin{array}{NNNN}
+                                  5 &
+                                  6 &
+                                  7 &
+                                  8
+                              \end{array}\right]_{b}
+                          \\
+                          \left[\begin{array}{NNNN}
+                                  9  &
+                                  10 &
+                                  11 &
+                                  12
+                              \end{array}\right]_{b}
+                      \end{array}\right]_{a}
+             &
+            \left[\begin{array}{ccc}
+                          \left[\begin{array}{NNNN}
+                                  13 &
+                                  14 &
+                                  15 &
+                                  16
+                              \end{array}\right]_{b}
+                          \\
+                          \left[\begin{array}{NNNN}
+                                  17 &
+                                  18 &
+                                  19 &
+                                  20
+                              \end{array}\right]_{b}
+                          \\
+                          \left[\begin{array}{NNNN}
+                                  21 &
+                                  22 &
+                                  23 &
+                                  24
+                              \end{array}\right]_{b}
+                      \end{array}\right]_{a}
+        \end{array}\right]_{i}
+\]
+\[
+    T_i{}^a{}_b=
+    \tarr{cc}{
+        \tarr{ccc}{
+            \tarr{NNNN}{1&2&3&4}_{b}
+            \\
+            \tarr{NNNN}{1&2&3&4}_{b}
+            \\
+            \tarr{NNNN}{1&2&3&4}_{b}
+        }^{a}
+        &
+        \tarr{ccc}{
+            \tarr{NNNN}{1&2&3&4}_{b}
+            \\
+            \tarr{NNNN}{1&2&3& \frac{2123}2}_{b}
+            \\
+            \tarr{NNNN}{1&2&3&12345}_{b}
+        }^{a}
+    }_{i}
+\]
+
+\[
+    T^i{}_{ab} =
+    \tarr{c}{
+        \tarr{cc}{
+            \tarr{NNN}{1 & 2 & 3}_{b}
+            &
+            \tarr{NNN}{4 & 5 & 6}_{b}
+        }_{a}
+        \\
+        \tarr{cc}{
+            \tarr{NNN}{7 & 8 & 9}_{b}
+            &
+            \tarr{NNN}{10 & 11 & 1200}_{b}
+        }_{a}
+    }^{i}
+\]
+
+
+\[
     s=\left[\begin{array}{c}7\end{array}\right]_{0}
 \]
 \[
@@ -366,7 +473,7 @@ is the Laplacian of coordinate function \(p^j(c)\) under \(c\)
 \]
 \[
     B^i{}_a=\left[\begin{array}{cc}
-            \left[\begin{array}{lll}1&2&3\end{array}\right]_{a}
+            \left[\begin{array}{lll}1&22&3\end{array}\right]_{a}
             \\
             \left[\begin{array}{lll}4&5&6\end{array}\right]_{a}
         \end{array}\right]_{i}
@@ -1092,66 +1199,66 @@ TMP
 5.1 三角形一次元：重心坐标
 设三角形三个顶点为
 \[
-A_1,\quad A_2,\quad A_3.
+    A_1,\quad A_2,\quad A_3.
 \]
 
 定义三个重心坐标函数：
 \[
-\lambda_1(x,y),\quad
-\lambda_2(x,y),\quad
-\lambda_3(x,y),
+    \lambda_1(x,y),\quad
+    \lambda_2(x,y),\quad
+    \lambda_3(x,y),
 \]
 
 满足
 \[
-\lambda_1+\lambda_2+\lambda_3=1
+    \lambda_1+\lambda_2+\lambda_3=1
 \]
 
 以及
 \[
-\lambda_i(A_j)=\delta_{ij}.
+    \lambda_i(A_j)=\delta_{ij}.
 \]
 
 三角形重心坐标的几何示意
 对于一次三角形元，选择：
 \[
-P_1(K)=\operatorname{span}\{1,x,y\}.
+    P_1(K)=\operatorname{span}\{1,x,y\}.
 \]
 
 三个自由度分别是三个顶点函数值。
 
 那么三个形函数直接就是：
 \[
-\boxed{
-\phi_1=\lambda_1,\qquad
-\phi_2=\lambda_2,\qquad
-\phi_3=\lambda_3.
-}
+    \boxed{
+        \phi_1=\lambda_1,\qquad
+        \phi_2=\lambda_2,\qquad
+        \phi_3=\lambda_3.
+    }
 \]
 
 插值函数为：
 \[
-\boxed{
-I_Ku=\sum_{i=1}^3u(A_i)\lambda_i.
-}
+    \boxed{
+        I_Ku=\sum_{i=1}^3u(A_i)\lambda_i.
+    }
 \]
 
 你看，一维的
 \[
-u(a)(1-\xi)+u(b)\xi
+    u(a)(1-\xi)+u(b)\xi
 \]
 
 与二维的
 \[
-u(A_1)\lambda_1+u(A_2)\lambda_2+u(A_3)\lambda_3
+    u(A_1)\lambda_1+u(A_2)\lambda_2+u(A_3)\lambda_3
 \]
 
 其实是同一种思想。
 5.2 三角形二次元：六个自由度
 二维二次多项式空间是：
 \[
-P_2(K)=\operatorname{span}
-\{1,x,y,x^2,xy,y^2\}.
+    P_2(K)=\operatorname{span}
+    \{1,x,y,x^2,xy,y^2\}.
 \]
 
 它的维数为 6。
@@ -1164,18 +1271,18 @@ P_2(K)=\operatorname{span}
 
 顶点对应：
 \[
-\boxed{
-\phi_i=\lambda_i(2\lambda_i-1),
-\qquad i=1,2,3.
-}
+    \boxed{
+        \phi_i=\lambda_i(2\lambda_i-1),
+        \qquad i=1,2,3.
+    }
 \]
 
 三条边中点对应：
 \[
-\boxed{
-\phi_{ij}=4\lambda_i\lambda_j,
-\qquad i<j.
-}
+    \boxed{
+        \phi_{ij}=4\lambda_i\lambda_j,
+        \qquad i<j.
+    }
 \]
 
 为什么这些公式正确？
@@ -1184,13 +1291,13 @@ P_2(K)=\operatorname{span}
 
 在边 \(A_1A_2\) 的中点，
 \[
-\lambda_1=\lambda_2=\frac12,\qquad
-\lambda_3=0.
+    \lambda_1=\lambda_2=\frac12,\qquad
+    \lambda_3=0.
 \]
 
 于是
 \[
-\phi_{12}=4\cdot\frac12\cdot\frac12=1.
+    \phi_{12}=4\cdot\frac12\cdot\frac12=1.
 \]
 
 而在其他五个节点，它都为零。
@@ -1201,24 +1308,24 @@ P_2(K)=\operatorname{span}
 
 取非负整数三元组
 \[
-\alpha=(\alpha_1,\alpha_2,\alpha_3),\qquad
-\alpha_1+\alpha_2+\alpha_3=k.
+    \alpha=(\alpha_1,\alpha_2,\alpha_3),\qquad
+    \alpha_1+\alpha_2+\alpha_3=k.
 \]
 
 对应的插值节点满足：
 \[
-\lambda_i=\frac{\alpha_i}{k}.
+    \lambda_i=\frac{\alpha_i}{k}.
 \]
 
 定义
 \[
-\boxed{
-\phi_\alpha(\lambda)
-=
-\prod_{i=1}^3
-\frac1{\alpha_i!}
-\prod_{r=0}^{\alpha_i-1}(k\lambda_i-r).
-}
+    \boxed{
+        \phi_\alpha(\lambda)
+        =
+        \prod_{i=1}^3
+        \frac1{\alpha_i!}
+        \prod_{r=0}^{\alpha_i-1}(k\lambda_i-r).
+    }
 \]
 
 其中空乘积视为 1。
@@ -1233,11 +1340,11 @@ P_2(K)=\operatorname{span}
 
 因此：
 \[
-\boxed{
-\text{重心坐标}+\text{多重指标}
-\longrightarrow
-\text{任意次数三角形 Lagrange 元}.
-}
+    \boxed{
+        \text{重心坐标}+\text{多重指标}
+        \longrightarrow
+        \text{任意次数三角形 Lagrange 元}.
+    }
 \]
 
 我们可以在这里停止，不需要再单独背三次三角形元的十个公式。
@@ -1246,34 +1353,34 @@ P_2(K)=\operatorname{span}
 
 考虑参考正方形
 \[
-\widehat K=[0,1]^2,
+    \widehat K=[0,1]^2,
 \]
 
 坐标为 \((\xi,\eta)\)。
 
 我们已经知道，一维一次形函数是：
 \[
-L_0(t)=1-t,\qquad L_1(t)=t.
+    L_0(t)=1-t,\qquad L_1(t)=t.
 \]
 
 现在把两个方向的形函数相乘：
 \[
-\boxed{
-N_{ij}(\xi,\eta)=L_i(\xi)L_j(\eta),
-\qquad i,j\in\{0,1\}.
-}
+    \boxed{
+        N_{ij}(\xi,\eta)=L_i(\xi)L_j(\eta),
+        \qquad i,j\in\{0,1\}.
+    }
 \]
 
 立刻得到：
 \[
-\boxed{
-\begin{aligned}
-N_{00}&=(1-\xi)(1-\eta),\\
-N_{10}&=\xi(1-\eta),\\
-N_{11}&=\xi\eta,\\
-N_{01}&=(1-\xi)\eta.
-\end{aligned}
-}
+    \boxed{
+        \begin{aligned}
+            N_{00} & =(1-\xi)(1-\eta), \\
+            N_{10} & =\xi(1-\eta),     \\
+            N_{11} & =\xi\eta,         \\
+            N_{01} & =(1-\xi)\eta.
+        \end{aligned}
+    }
 \]
 
 这正是双线性四节点矩形元。
@@ -1282,17 +1389,17 @@ N_{01}&=(1-\xi)\eta.
 
 一般地：
 \[
-\boxed{
-Q_k=P_k(\xi)\otimes P_k(\eta).
-}
+    \boxed{
+        Q_k=P_k(\xi)\otimes P_k(\eta).
+    }
 \]
 
 所以：
 \[
-\boxed{
-N_{ij}(\xi,\eta)=L_i(\xi)L_j(\eta),
-\quad 0\le i,j\le k.
-}
+    \boxed{
+        N_{ij}(\xi,\eta)=L_i(\xi)L_j(\eta),
+        \quad 0\le i,j\le k.
+    }
 \]
 
 当 \(k=1\)，有 \(2^2=4\) 个形函数。
@@ -1309,21 +1416,21 @@ N_{ij}(\xi,\eta)=L_i(\xi)L_j(\eta),
 
 在矩形的两个坐标方向上分别使用它们，再做张量积，就得到
 \[
-\boxed{Q_3(\widehat K)}
+    \boxed{Q_3(\widehat K)}
 \]
 
 中的十六个形函数。
 
 四个顶点，每个顶点可以设置四类自由度：
 \[
-\boxed{
-u,\qquad u_x,\qquad u_y,\qquad u_{xy}.
-}
+    \boxed{
+        u,\qquad u_x,\qquad u_y,\qquad u_{xy}.
+    }
 \]
 
 一共
 \[
-4\times4=16
+    4\times4=16
 \]
 
 个自由度。
@@ -1332,28 +1439,28 @@ u,\qquad u_x,\qquad u_y,\qquad u_{xy}.
 
 对一个轴对齐矩形，它的插值可以概括为：
 \[
-\begin{aligned}
-I_Hu(\xi,\eta)
-=\sum_{i,j=0}^1\big[&
-u_{ij}H_i^v(\xi)H_j^v(\eta)\\
-&+h_x(u_x)_{ij}H_i^d(\xi)H_j^v(\eta)\\
-&+h_y(u_y)_{ij}H_i^v(\xi)H_j^d(\eta)\\
-&+h_xh_y(u_{xy})_{ij}H_i^d(\xi)H_j^d(\eta)
-\big],
-\end{aligned}
+    \begin{aligned}
+        I_Hu(\xi,\eta)
+        =\sum_{i,j=0}^1\big[ &
+        u_{ij}H_i^v(\xi)H_j^v(\eta)                                      \\
+                             & +h_x(u_x)_{ij}H_i^d(\xi)H_j^v(\eta)       \\
+                             & +h_y(u_y)_{ij}H_i^v(\xi)H_j^d(\eta)       \\
+                             & +h_xh_y(u_{xy})_{ij}H_i^d(\xi)H_j^d(\eta)
+            \big],
+    \end{aligned}
 \]
 
 其中 \(H_i^v\) 是一维 Hermite 的端点函数值基函数，\(H_i^d\) 是端点导数基函数。
 
 因此我们得到一个非常漂亮的关系：
 \[
-\boxed{
-\text{一维三次 Hermite 元}
-\ \otimes\
-\text{一维三次 Hermite 元}
-=
-\text{二维双三次 Hermite 元}.
-}
+    \boxed{
+        \text{一维三次 Hermite 元}
+        \ \otimes\
+        \text{一维三次 Hermite 元}
+        =
+        \text{二维双三次 Hermite 元}.
+    }
 \]
 
 在相容的矩形网格上，正确共享这些顶点自由度还能构造 \(C^1\) 有限元空间。对于一般曲边或四边形映射，则需要额外处理导数自由度的变换及单元间相容性。
@@ -1373,76 +1480,76 @@ u_{ij}H_i^v(\xi)H_j^v(\eta)\\
 6.1 一维区间：仿射映射
 对于实际单元 \(K=[a,b]\)，定义
 \[
-x=F_K(\xi)=a+(b-a)\xi.
+    x=F_K(\xi)=a+(b-a)\xi.
 \]
 
 逆映射：
 \[
-\xi=\frac{x-a}{b-a}.
+    \xi=\frac{x-a}{b-a}.
 \]
 
 参考元形函数 \(\widehat\phi_i\) 对应实际元形函数：
 \[
-\boxed{
-\phi_i(x)=\widehat\phi_i(F_K^{-1}(x)).
-}
+    \boxed{
+        \phi_i(x)=\widehat\phi_i(F_K^{-1}(x)).
+    }
 \]
 
 而导数通过链式法则得到：
 \[
-\boxed{
-\frac{d\phi_i}{dx}
-=\frac1{b-a}\frac{d\widehat\phi_i}{d\xi}.
-}
+    \boxed{
+        \frac{d\phi_i}{dx}
+        =\frac1{b-a}\frac{d\widehat\phi_i}{d\xi}.
+    }
 \]
 
 这就是为什么老师不断引入 \(\xi\)、\(h\) 和坐标变换。
 6.2 三角形：仿射映射
 取参考三角形：
 \[
-\widehat K
-=\{(\xi,\eta):\xi\ge0,\eta\ge0,\xi+\eta\le1\}.
+    \widehat K
+    =\{(\xi,\eta):\xi\ge0,\eta\ge0,\xi+\eta\le1\}.
 \]
 
 实际三角形的三个顶点分别是 \(A_1,A_2,A_3\)。
 
 定义：
 \[
-\boxed{
-F_K(\xi,\eta)
-=A_1+\xi(A_2-A_1)+\eta(A_3-A_1).
-}
+    \boxed{
+        F_K(\xi,\eta)
+        =A_1+\xi(A_2-A_1)+\eta(A_3-A_1).
+    }
 \]
 
 这是仿射映射。
 
 它的 Jacobian 矩阵为：
 \[
-J_K=
-\begin{pmatrix}
-\partial x/\partial\xi&\partial x/\partial\eta\\
-\partial y/\partial\xi&\partial y/\partial\eta
-\end{pmatrix}.
+    J_K=
+    \begin{pmatrix}
+        \partial x/\partial\xi & \partial x/\partial\eta \\
+        \partial y/\partial\xi & \partial y/\partial\eta
+    \end{pmatrix}.
 \]
 
 对于非退化三角形，\(J_K\) 可逆，并且在单元内为常数。
 
 梯度变换公式是：
 \[
-\boxed{
-\nabla_x\phi
-=J_K^{-T}\nabla_{\xi}\widehat\phi.
-}
+    \boxed{
+        \nabla_x\phi
+        =J_K^{-T}\nabla_{\xi}\widehat\phi.
+    }
 \]
 
 积分变换公式是：
 \[
-\boxed{
-\int_Kg(x)\,dx
-=
-\int_{\widehat K}
-g(F_K(\xi))|\det J_K|\,d\xi.
-}
+    \boxed{
+        \int_Kg(x)\,dx
+        =
+        \int_{\widehat K}
+        g(F_K(\xi))|\det J_K|\,d\xi.
+    }
 \]
 
 这两个公式以后会直接用于有限元刚度矩阵计算。
@@ -1455,18 +1562,18 @@ g(F_K(\xi))|\det J_K|\,d\xi.
 
 定义几何映射：
 \[
-\boxed{
-F_K(\xi,\eta)
-=\sum_{i=1}^4N_i(\xi,\eta)X_i.
-}
+    \boxed{
+        F_K(\xi,\eta)
+        =\sum_{i=1}^4N_i(\xi,\eta)X_i.
+    }
 \]
 
 展开就是：
 \[
-\begin{aligned}
-x(\xi,\eta)&=\sum_{i=1}^4N_i(\xi,\eta)x_i,\\
-y(\xi,\eta)&=\sum_{i=1}^4N_i(\xi,\eta)y_i.
-\end{aligned}
+    \begin{aligned}
+        x(\xi,\eta) & =\sum_{i=1}^4N_i(\xi,\eta)x_i, \\
+        y(\xi,\eta) & =\sum_{i=1}^4N_i(\xi,\eta)y_i.
+    \end{aligned}
 \]
 
 只要映射在单元上可逆且 Jacobian 不退化，就能把参考元形函数搬过去。
@@ -1477,11 +1584,11 @@ y(\xi,\eta)&=\sum_{i=1}^4N_i(\xi,\eta)y_i.
 
 因此我们又得到一个独立的生成规则：
 \[
-\boxed{
-\text{参考元}+\text{合法的几何映射}
-\longrightarrow
-\text{实际有限元}.
-}
+    \boxed{
+        \text{参考元}+\text{合法的几何映射}
+        \longrightarrow
+        \text{实际有限元}.
+    }
 \]
 
 这条规则能够避免为每一个不同形状的三角形、四边形重新推导形函数。
@@ -1493,17 +1600,17 @@ y(\xi,\eta)&=\sum_{i=1}^4N_i(\xi,\eta)y_i.
 
 设网格为：
 \[
-\mathcal T_h=\{K_1,\ldots,K_M\}.
+    \mathcal T_h=\{K_1,\ldots,K_M\}.
 \]
 
 例如使用分片线性元，我们希望构造：
 \[
-V_h=
-\left\{
-v_h\in C(\overline\Omega):
-v_h|_K\in P_1(K),\quad
-\forall K\in\mathcal T_h
-\right\}.
+    V_h=
+    \left\{
+    v_h\in C(\overline\Omega):
+    v_h|_K\in P_1(K),\quad
+    \forall K\in\mathcal T_h
+    \right\}.
 \]
 
 如果两个相邻的一维单元共享节点 \(x_i\)，那么该节点的函数值必须相同。
@@ -1526,34 +1633,34 @@ v_h|_K\in P_1(K),\quad
 
 我们定义：
 \[
-\|v\|_{L^2(\Omega)}^2
-=\int_\Omega |v|^2\,dx,
+    \|v\|_{L^2(\Omega)}^2
+    =\int_\Omega |v|^2\,dx,
 \]
 
 以及
 \[
-\|v\|_{H^1(\Omega)}^2
-=
-\int_\Omega
-\left(|v|^2+|\nabla v|^2\right)\,dx.
+    \|v\|_{H^1(\Omega)}^2
+    =
+    \int_\Omega
+    \left(|v|^2+|\nabla v|^2\right)\,dx.
 \]
 
 其中：
 \[
-|v|_{H^1(\Omega)}
-=\|\nabla v\|_{L^2(\Omega)}
+    |v|_{H^1(\Omega)}
+    =\|\nabla v\|_{L^2(\Omega)}
 \]
 
 称为 \(H^1\) 半范数。
 
 在形状正则的网格、足够光滑的函数以及适当的插值算子条件下，\(k\) 次 Lagrange 插值具有典型误差估计：
 \[
-\boxed{
-|u-I_hu|_{H^m(\Omega)}
-\le
-Ch^{k+1-m}|u|_{H^{k+1}(\Omega)},
-\quad m=0,1.
-}
+    \boxed{
+        |u-I_hu|_{H^m(\Omega)}
+        \le
+        Ch^{k+1-m}|u|_{H^{k+1}(\Omega)},
+        \quad m=0,1.
+    }
 \]
 
 因此我们可以直接生成一张误差阶表：
@@ -1575,57 +1682,57 @@ Ch^{k+1-m}|u|_{H^{k+1}(\Omega)},
 九、最后补上 PDE，这个闭包才真正接入有限元法
 你 9 月 29 日最早的一张板书中，就出现了二维 Poisson 方程：
 \[
-\begin{cases}
--\Delta u=f,&x\in\Omega,\\
-u=0,&x\in\partial\Omega.
-\end{cases}
+    \begin{cases}
+        -\Delta u=f, & x\in\Omega,         \\
+        u=0,         & x\in\partial\Omega.
+    \end{cases}
 \]
 
 对于适当的 \(f\)，它的弱形式是寻找 \(u\in H_0^1(\Omega)\)，使得
 \[
-\boxed{
-\int_\Omega\nabla u\cdot\nabla v\,dx
-=
-\int_\Omega fv\,dx,
-\qquad\forall v\in H_0^1(\Omega).
-}
+    \boxed{
+        \int_\Omega\nabla u\cdot\nabla v\,dx
+        =
+        \int_\Omega fv\,dx,
+        \qquad\forall v\in H_0^1(\Omega).
+    }
 \]
 
 现在选择我们刚才生成的有限元空间：
 \[
-V_h\subset H_0^1(\Omega).
+    V_h\subset H_0^1(\Omega).
 \]
 
 求 \(u_h\in V_h\)，使得
 \[
-\int_\Omega\nabla u_h\cdot\nabla v_h\,dx
-=
-\int_\Omega fv_h\,dx,
-\qquad\forall v_h\in V_h.
+    \int_\Omega\nabla u_h\cdot\nabla v_h\,dx
+    =
+    \int_\Omega fv_h\,dx,
+    \qquad\forall v_h\in V_h.
 \]
 
 设全局基函数为 \(\Phi_1,\ldots,\Phi_N\)，令
 \[
-u_h=\sum_{j=1}^N U_j\Phi_j.
+    u_h=\sum_{j=1}^N U_j\Phi_j.
 \]
 
 最后得到：
 \[
-\boxed{AU=F,}
+    \boxed{AU=F,}
 \]
 
 其中
 \[
-\boxed{
-A_{ij}
-=
-\sum_{K\in\mathcal T_h}
-\int_K\nabla\Phi_j\cdot\nabla\Phi_i\,dx,
-}
+    \boxed{
+        A_{ij}
+        =
+        \sum_{K\in\mathcal T_h}
+        \int_K\nabla\Phi_j\cdot\nabla\Phi_i\,dx,
+    }
 \]
 
 \[
-F_i=\int_\Omega f\Phi_i\,dx.
+    F_i=\int_\Omega f\Phi_i\,dx.
 \]
 
 至此，从有限元空间到计算机上的线性方程组，整条路线就接通了。
