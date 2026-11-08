@@ -11,4 +11,5 @@
 *.bbl
 *.blg
 *.pdf
+*.pdf_tex
 *.log
