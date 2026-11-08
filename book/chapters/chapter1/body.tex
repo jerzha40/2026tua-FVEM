@@ -533,12 +533,6 @@ TMP
 
 
 \section{FEM}
-\begin{figure}[htbp]
-    \centering
-    \includesvg[width=0.55\linewidth]{figures/triangle.svg}
-    \caption{Barycentric coordinates on a triangle}
-\end{figure}
-
 三、最重要的通用生成公式
 无论几维、几次，我们都从
 \[
@@ -696,28 +690,28 @@ TMP
 
 代入通用生成器
 \[
-    M^{i}{}_{j}=\braket{\ell^i}{p_j}.
-    =\left[\begin{array}{cc}
-            \left[\begin{array}{cc}1&0\end{array}\right]_{j}
-            \\
-            \left[\begin{array}{cc}1&1\end{array}\right]_{j}
-        \end{array}\right]_{i}
+    M^{i}{}_{j}=\braket{\ell^i}{p_j}
+    =\tarr{cc}{
+        \tarr{cc}{1&0}_j
+        \\
+        \tarr{cc}{1&1}_j
+    }^i
 \]
 \[
     (M^{-1})_{i}{}^{j}
-    =\left[\begin{array}{cc}
-            \left[\begin{array}{NNN}
-                          1
-                          \\
-                          -1
-                      \end{array}\right]_{j}
-             &
-            \left[\begin{array}{NNN}
-                          0
-                          \\
-                          1
-                      \end{array}\right]_{j}
-        \end{array}\right]_{i}
+    =\tarrf{cc}{
+        \tarrf[1em]{2}{
+            1
+            \\
+            -1
+        }_j
+        &
+        \tarrf[1em]{2}{
+            0
+            \\
+            1
+        }_j
+    }_i
 \]
 所以：
 \[
@@ -1191,6 +1185,9 @@ TMP
 这里生成的是局部元。把相邻单元按共享自由度拼起来，才得到全局有限元空间。
 
 你会发现：我们只学了一条 Lagrange 公式、一套自由度矩阵方法，以及 Hermite 自由度的构造，便覆盖了一维的主要情况。
+
+
+\subsection{2-1}
 五、二维不是重新学，而是增加两种生成机制
 二维有两类非常常见的几何单元：
 - 三角形：用重心坐标生成。
@@ -1199,25 +1196,33 @@ TMP
 5.1 三角形一次元：重心坐标
 设三角形三个顶点为
 \[
-    A_1,\quad A_2,\quad A_3.
+    A^1_i,\quad A^2_i,\quad A^3_i.
 \]
+\begin{figure}[htbp]
+    \centering
+    \includesvg[width=0.55\linewidth]{figures/triangle.svg}
+    \caption{Barycentric coordinates on a triangle}
+\end{figure}
+
 
 定义三个重心坐标函数：
 \[
-    \lambda_1(x,y),\quad
-    \lambda_2(x,y),\quad
-    \lambda_3(x,y),
+    \lambda^1(x_i),\quad
+    \lambda^2(x_i),\quad
+    \lambda^3(x_i),
 \]
 
 满足
 \[
-    \lambda_1+\lambda_2+\lambda_3=1
+    \lambda^j=1
 \]
 
 以及
+自由度为
 \[
-    \lambda_i(A_j)=\delta_{ij}.
+    \braket{\ell^j}{p}=p(A^j)
 \]
+
 
 三角形重心坐标的几何示意
 对于一次三角形元，选择：
@@ -1226,6 +1231,83 @@ TMP
 \]
 
 三个自由度分别是三个顶点函数值。
+
+代入通用生成器
+\[
+    \ket{p_j}=
+    \tarrf{ccc}{1&x&y}_j
+\]
+\[
+    M^{i}{}_{j}=\braket{\ell^i}{p_j}
+    =\tarr{cc}{
+        \tarr{ccc}{1&A^1_0&A^1_1}_j
+        \\
+        \tarr{ccc}{1&A^2_0&A^2_1}_j
+        \\
+        \tarr{ccc}{1&A^3_0&A^3_1}_j
+    }^i
+\]
+\[
+    (M^{-1})_{i}{}^{j}
+    =\tarrf{cc}{
+        \tarrf[1em]{2}{
+            1
+            \\
+            -1
+        }_j
+        &
+        \tarrf[1em]{2}{
+            0
+            \\
+            1
+        }_j
+    }_i
+\]
+所以：
+\[
+    \boxed{
+    |\phi_i\rangle
+    =|p_j\rangle(M^{-1})^j{}_i.
+    }
+    \tag{1}
+\]
+\[
+    \left[\begin{array}{cc}\ket{\phi_0}&\ket{\phi_1}\end{array}\right]_{i}
+    =
+    \left[\begin{array}{cc}\ket{p_0}&\ket{p_1}\end{array}\right]_{j}
+    \left[\begin{array}{cc}
+            \left[\begin{array}{NNN}
+                          1
+                          \\
+                          -1
+                      \end{array}\right]_{j}
+             &
+            \left[\begin{array}{NNN}
+                          0
+                          \\
+                          1
+                      \end{array}\right]_{j}
+        \end{array}\right]_{i}.
+\]
+
+得到：
+\[
+    \boxed{
+        L_0(\xi)=1-\xi,\qquad L_1(\xi)=\xi.
+    }
+\]
+
+\[
+    \boxed{
+        I_Ku=\sum_{j=1}^n\braket{\ell^j}{u}\phi_j.
+    }
+\]
+
+插值函数为
+\[
+    I_1u=u(0)L_0+u(1)L_1.
+\]
+
 
 那么三个形函数直接就是：
 \[
